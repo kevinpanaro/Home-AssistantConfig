@@ -1,0 +1,14 @@
+- platform: mqtt_json
+  name: Under Bed Light
+  state_topic: "homeassistant/light/bed/rgb" 
+  command_topic: "homeassistant/light/bed/rgb/set" 
+  brightness: true
+  rgb: true
+  effect: true
+  effect_list: [colorfade_slow, colorfade_fast, flash]
+  optimistic: false
+  qos: 0
+- platform: mqtt
+  command_topic: "homeassistant/light/desk/switch"
+  state_topic: "homeassistant/light/desk/status"
+  name: "Desk Lamp"

@@ -1,0 +1,10 @@
+- name: Parents
+  latitude: !secret parents_latitude
+  longitude: !secret parents_longitude
+  radius: 100
+  passive: true
+- name: School
+  latitude: !secret school_latitude
+  longitude: !secret school_longitude
+  radius: 300
+  icon: mdi:school

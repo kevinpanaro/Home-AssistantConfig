@@ -1,0 +1,43 @@
+hdmi_switch:
+  name: HDMI Switch
+  view: no
+  entities:
+    - automation.hdmi_switch
+    - input_select.hdmi_switch
+
+kevins_room_lights:
+  name: Kevin's Room Lights
+  view: no
+  entities:
+    - light.under_bed_light
+    - light.desk_lamp
+
+kevins_room_media_players:
+  name: Kevin's Room Media Players
+  view: no
+  entities: 
+    - media_player.the_future
+    - media_player.fluffhead
+
+kevins_room:
+  name: Kevin's Room
+  view: yes
+  entities:
+    - group.kevins_room_media_players
+    - group.hdmi_switch
+    - group.kevins_room_lights
+main_room:
+  name: Main Room
+  view: yes
+  entities:
+    - media_player.dickbutt
+
+
+# For Spotify Playlist Picker
+music_spotify:
+  name: Music
+  entities:
+    - input_select.spotify_playlist
+    - input_select.spotify_source
+    - script.spotify_music
+    - input_number.spotify_volume

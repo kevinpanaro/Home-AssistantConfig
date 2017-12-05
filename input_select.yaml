@@ -1,0 +1,29 @@
+hdmi_switch:
+  name: HDMI Switch
+  options:
+    - "OSMC"
+    - "Chromecast"
+    - "Mac"
+  icon: mdi:television-classic
+  initial: "Chromecast"
+
+# For Spotify Playlist Picker
+spotify_playlist:
+  name: 'Playlist:'
+  options:
+    - Discover Weekly
+    - Jazz Vibes
+    - mykp
+    - kev time
+    - blow me
+    - a girl
+  icon: mdi:spotify
+spotify_source:
+  name: 'Source:'
+  options:
+    - Fluance SX6
+    - Kevin's Echo Dot
+    - Kevin's MacBook Air
+    - Kevin Panaro's iPhone
+  initial: Fluance SX6
+  icon: mdi:speaker-wireless

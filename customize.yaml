@@ -1,0 +1,6 @@
+automation.hdmi_switch:
+  hidden: true
+
+script.spotify_music:
+  friendly_name: "Play"
+  icon: mdi:play
