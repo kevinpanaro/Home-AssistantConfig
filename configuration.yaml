@@ -12,6 +12,7 @@ homeassistant:
   time_zone: America/New_York
   customize: !include customize.yaml
 
+# For alexa component
 alexa:
 
 # Enables the frontend
