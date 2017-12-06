@@ -26,12 +26,13 @@ kevins_room:
     - group.kevins_room_media_players
     - group.hdmi_switch
     - group.kevins_room_lights
+    - group.music_spotify
+
 main_room:
   name: Main Room
   view: yes
   entities:
     - media_player.dickbutt
-
 
 # For Spotify Playlist Picker
 music_spotify:

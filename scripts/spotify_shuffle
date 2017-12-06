@@ -1,0 +1,8 @@
+#!/bin/bash
+AUTH=`grep -Po '(?<="access_token": ")[^"]*' /home/homeassistant/.homeassistant/.spotify-token-cache`
+echo $AUTH
+A='curl -X PUT "https://api.spotify.com/v1/me/player/shuffle?state=true" -H "Accept: application/json" -H "Authorization: Bearer '
+C=${A}${AUTH}\"
+echo
+echo $C
+eval $C
