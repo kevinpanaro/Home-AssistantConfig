@@ -1,5 +1,5 @@
 - platform: nmap_tracker
-  hosts: 192.168.0.3
+  hosts: !secret kevins_iphone_ip
 - platform: mqtt
   devices:
     backpack_beacon: homeassistant/device_tracker/ble/beacon
