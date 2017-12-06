@@ -1,4 +1,5 @@
 - alias: HDMI Switch
+  hide_entity: True
   trigger:
     platform: state
     entity_id: input_select.hdmi_switch
@@ -9,6 +10,7 @@
       payload_template: "{{ states('input_select.hdmi_switch') }}"
 
 - alias: Night Light ON
+  hide_entity: True
   trigger:
     platform: time
     at: '00:00:00'
@@ -21,6 +23,7 @@
       transition: 5
 
 - alias: Night Light OFF
+  hide_entity: True
   trigger:
     platform: sun
     event: sunrise
@@ -30,6 +33,7 @@
       - light.under_bed_light
 
 - alias: Turn off all lights
+  hide_entity: True
   trigger:
     platform: time
     at: '23:59:55'
@@ -41,6 +45,7 @@
       transition: 30 
 
 - alias: Sunset Desk Light
+  hide_entity: True
   trigger:
     platform: sun
     event: sunset
@@ -50,6 +55,7 @@
       - light.desk_lamp
 
 - alias: 'Auto Renew SSL Cert'
+  hide_entity: True
   trigger:
     platform: numeric_state
     entity_id: sensor.ssl_cert_expiry
@@ -58,6 +64,7 @@
     service: shell_command.renew_ssl
 
 - alias: 'SSL expiry notification'
+  hide_entity: True
   trigger:
     platform: numeric_state
     entity_id: sensor.ssl_cert_expiry
@@ -68,6 +75,7 @@
       message: 'Warning - SSL certificate expires in 21 days and has not been automatically renewed'
 
 - alias: 'Set Spotify Volume'
+  hide_entity: True
   trigger:
     platform: state
     entity_id: input_number.spotify_volume
@@ -80,22 +88,26 @@
 # ios notifications
 # turn off lights
 - alias: Notify Kevin his Lights are on
+  hide_entity: True
   trigger:
     platform: zone
     event: leave
-    zone.home
+    zone: zone.home
     entity_id: device_tracker.kevin_panaros_iphone
   condition:
     condition: state
-      entity_id: group.all_lights
-      state: 'on'
+    entity_id: group.all_lights
+    state: 'on'
   action:
     service: notify.ios_kevin_panaros_iphone
     data:
       message: 'You left a light on at home'
-      category: 'lightsoff'
+      data:
+        push:
+          category: 'lightsoff'
  
 - alias: Handle iOS Turn Off Lights Notification
+  hide_entity: True
   trigger:
     platform: event
     event_type: ios.notification_action_fired
