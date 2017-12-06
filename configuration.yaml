@@ -69,7 +69,23 @@ tts:
 
 # Kev additions
 ios:
-
+  push:
+    categories:
+      - name: Lights
+        identifier: 'lightsoff'
+        actions:
+          - identifier: 'TURN_OFF_LIGHTS'
+            title: 'Turn Off Lights'
+            activationMode: background
+            authenticationRequired: no
+            destructive: no
+          - identifier: 'KEEP_LIGHTS_ON'
+            title: 'Keep Lights On'
+            activationMode: background
+            authenticationRequired: no
+            destructive: yes
+            
+        
 mqtt:
   broker: !secret mrpalmer
 

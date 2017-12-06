@@ -76,3 +76,31 @@
     data_template:
       entity_id: media_player.spotify
       volume_level: '{{ states.input_number.spotify_volume.state }}'
+
+# ios notifications
+# turn off lights
+- alias: Notify Kevin his Lights are on
+  trigger:
+    platform: zone
+    event: leave
+    zone.home
+    entity_id: device_tracker.kevin_panaros_iphone
+  condition:
+    condition: state
+      entity_id: group.all_lights
+      state: 'on'
+  action:
+    service: notify.ios_kevin_panaros_iphone
+    data:
+      message: 'You left a light on at home'
+      category: 'lightsoff'
+ 
+- alias: Handle iOS Turn Off Lights Notification
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: TURN_OFF_LIGHTS
+  action:
+   entity_id: group.all_lights
+   service: light.turn_off
