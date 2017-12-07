@@ -1,0 +1,6 @@
+- platform: yr
+
+- platform: command_line
+  name: SSL cert expiry
+  scan_interval: 10800
+  command: !secret duck_dns_update_command
