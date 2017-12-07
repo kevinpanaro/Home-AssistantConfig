@@ -56,46 +56,17 @@ map:
 sun:
 
 # Weather prediction
-sensor:
-  - platform: yr
-  - platform: command_line
-    name: SSL cert expiry
-    scan_interval: 10800
-    command: !secret duck_dns_update_command
+sensor: !include sensor.yaml
 
 # Text to speech
-tts:
-  - platform: google
+tts: !include tts.yaml 
 
 # Kev additions
-ios:
-  push:
-    categories:
-      - name: Lights
-        identifier: 'lightsoff'
-        actions:
-          - identifier: 'KEEP_LIGHTS_ON'
-            title: 'Keep Lights On'
-            activationMode: background
-            authenticationRequired: no
-            destructive: yes
-          - identifier: 'TURN_OFF_LIGHTS'
-            title: 'Turn Off Lights'
-            activationMode: background
-            authenticationRequired: no
-            destructive: no
-        
-mqtt:
-  broker: !secret mrpalmer
+ios: !include ios.yaml
 
-media_player:
-  - platform: cast
-  - platform: kodi
-    host: !secret fluffhead 
-    name: fluffhead
-  - platform: spotify
-    client_id: !secret media_player_spotify_client_id
-    client_secret: !secret media_player_spotify_client_secret
+mqtt: !include mqtt.yaml
+
+media_player: !include media_player.yaml
 
 #binary_sensor: !include binary_sensor.yaml
 device_tracker: !include device_tracker.yaml
