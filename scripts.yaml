@@ -1,20 +1,20 @@
 spotify_music:
   alias: Play selected spotify playlist
   sequence:
-  - data:
+  - service: media_player.volume_set
+    data:
       entity_id: media_player.spotify
       volume_level: 0
-    service: media_player.volume_set
-  - data_template:
+  - service: media_player.select_source
+    data_template:
       entity_id: media_player.spotify
       source: the future
-    service: media_player.select_source
-  - data:
+  - service: media_player.shuffle_set
+    data:
       entity_id: media_player.spotify
       shuffle: true
-    service: media_player.shuffle_set
-  - data_template:
-    service: media_player.play_media
+  - service: media_player.play_media
+    data_template:
       entity_id: media_player.spotify
       media_content_id: '{% if is_state("input_select.spotify_playlist", "Discover
         Weekly") %} spotify:user:spotify:playlist:37i9dQZEVXcRxdYlA604qJ {% elif is_state("input_select.spotify_playlist",
@@ -27,8 +27,8 @@ spotify_music:
 
         '
       media_content_type: playlist
-  - data_template:
-    service: media_player.select_source
+  - service: media_player.select_source
+    data_template:
       entity_id: media_player.spotify
       source: '{% if is_state("input_select.spotify_source", "Fluance SX6") %} Fluance
         SX6 {% elif is_state("input_select.spotify_source", "Kevin''s Echo Dot") %}
@@ -40,8 +40,8 @@ spotify_music:
         '
   - service: media_player.media_pause
   - service: shell_command.spotify_seek
-  - data:
+  - service: media_player.volume_set
+    data:
       entity_id: media_player.spotify
       volume_level: '0.12'
-    service: media_player.volume_set
   - service: media_player.media_play
