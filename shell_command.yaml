@@ -1,3 +1,4 @@
 spotify_shuffle: /home/homeassistant/.homeassistant/scripts/spotify_shuffle
+spotify_seek:    /home/homeassistant/.homeassistant/scripts/spotify_seek
 
 renew_ssl: ~/certbot/certbot-auto renew --quiet --no-self-upgrade --standalone --preferred-challenges http-01
