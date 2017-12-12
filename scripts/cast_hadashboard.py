@@ -15,9 +15,11 @@ time.sleep(1)
 
 if not outcast.is_idle:
     outcast.quit_app()
-    time.sleep(5)
+    time.sleep(2)
+else:
+    time.sleep(2)
 
-time.sleep(1)
 
 d.load_url('http://192.168.0.7:5050/HA')
-
+time.sleep(2)
+d.load_url('http://192.168.0.7:5050/HA')
