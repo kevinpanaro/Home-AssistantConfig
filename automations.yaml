@@ -99,13 +99,17 @@
     entity_id: group.all_lights
     state: 'on'
   action:
-    service: notify.ios_kevin_panaros_iphone
+  - service: notify.ios_kevin_panaros_iphone
     data:
       message: 'You left a light on at home'
-      data:
-        push:
-          category: 'lightsoff'
- 
+# kept for example purposes
+#      data:
+#        push:
+#          category: 'lightsoff'
+  - service: light.turn_off
+    data:
+      entity_id: group.all_lights
+
 - alias: Handle iOS Turn Off Lights Notification
   hide_entity: True
   trigger:
