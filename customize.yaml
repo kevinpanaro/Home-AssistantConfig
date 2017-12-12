@@ -7,3 +7,6 @@ script.spotify_music:
 
 script.ha_dashboard:
   icon: mdi:view-dashboard
+
+device_tracker.kevins_macbook:
+  hidden: true
