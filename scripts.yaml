@@ -38,4 +38,8 @@ spotify_music:
 ha_dashboard:
   alias: Start HADashboard
   sequence:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.hdmi_switch
+      option: Chromecast
   - service: shell_command.activate_hadashbaord
