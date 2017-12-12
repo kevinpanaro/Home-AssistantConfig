@@ -4,3 +4,16 @@
   name: SSL cert expiry
   scan_interval: 10800
   command: !secret duck_dns_update_command
+
+- platform: darksky
+  api_key: !secret darksky_api_key
+  monitored_conditions:
+    - temperature
+    - humidity
+    - precip_probability
+    - precip_intensity
+    - wind_speed
+    - pressure
+    - wind_bearing
+    - apparent_temperature
+    - icon
