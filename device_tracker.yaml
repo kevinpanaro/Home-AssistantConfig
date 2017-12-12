@@ -3,3 +3,4 @@
 - platform: mqtt
   devices:
     backpack_beacon: homeassistant/device_tracker/ble/beacon
+    kevins_macbook: homeassistant/device_tracker/mqtt/macbook
