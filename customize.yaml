@@ -4,3 +4,6 @@ automation.hdmi_switch:
 script.spotify_music:
   friendly_name: "Play"
   icon: mdi:play
+
+script.ha_dashboard:
+  icon: mdi:view-dashboard
