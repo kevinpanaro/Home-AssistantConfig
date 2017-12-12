@@ -14,6 +14,10 @@
   trigger:
     platform: time
     at: '00:00:00'
+  condition:
+    condition: state
+    entity_id: 'device_tracker.kevins_macbook'
+    state: not_home
   action:
     service: light.turn_on
     entity_id:
@@ -120,3 +124,18 @@
   action:
    entity_id: group.all_lights
    service: light.turn_off
+
+- alias: Kevin's Working on his Macbook
+  hide_entity: True
+  trigger:
+    platform: time
+    minutes: '/5'
+    seconds: 00
+  condition:
+    condition: template
+    value_template: '{{ (as_timestamp(now())-as_timestamp(states.device_tracker.kevins_macbook.last_updated)) > 300 }}'
+  action:
+    service: mqtt.publish
+    data:
+      topic: "homeassistant/device_tracker/mqtt/macbook"
+      payload: "away"
