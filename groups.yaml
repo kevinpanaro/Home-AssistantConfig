@@ -27,7 +27,8 @@ kevins_room:
     - group.hdmi_switch
     - group.kevins_room_lights
     - group.music_spotify
-
+    - script.ha_dashboard
+ 
 main_room:
   name: Main Room
   view: yes
