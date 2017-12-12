@@ -1,47 +1,41 @@
 spotify_music:
   alias: Play selected spotify playlist
   sequence:
-  - service: media_player.volume_set
-    data:
-      entity_id: media_player.spotify
-      volume_level: 0
   - service: media_player.select_source
     data_template:
       entity_id: media_player.spotify
-      source: the future
+      source: >
+       {% if is_state("input_select.spotify_source", "Fluance SX6") %} Fluance SX6
+       {% elif is_state("input_select.spotify_source", "Kevin's Echo Dot") %} Kevin's Echo Dot
+       {% elif is_state("input_select.spotify_source", "Kevin's MacBook Air") %} Kevin's MacBook Air
+       {% elif is_state("input_select.spotify_source", "Kevin Panaro's iPhone") %} Kevin Panaro's iPhone
+       {% elif is_state("input_select.spotify_source", "the future") %} the future 
+       {% endif %}
+
   - service: media_player.shuffle_set
     data:
       entity_id: media_player.spotify
       shuffle: true
-  - service: media_player.play_media
-    data_template:
-      entity_id: media_player.spotify
-      media_content_id: '{% if is_state("input_select.spotify_playlist", "Discover
-        Weekly") %} spotify:user:spotify:playlist:37i9dQZEVXcRxdYlA604qJ {% elif is_state("input_select.spotify_playlist",
-        "Jazz Vibes") %} spotify:user:spotify:playlist:37i9dQZF1DX0SM0LYsmbMT  {%
-        elif is_state("input_select.spotify_playlist", "mykp") %} spotify:user:tuesday_jules:playlist:4HtAK1buoaO3pusyUU2fTO  {%
-        elif is_state("input_select.spotify_playlist", "kev time") %} spotify:user:12120187843:playlist:6EMgqBqtdF80QR6HEgRbHG  {%
-        elif is_state("input_select.spotify_playlist", "blow me" ) %} spotify:user:12120187843:playlist:7zNLeoqysdufhlqIf2pl7T
-        {% elif is_state("input_select.spotify_playlist", "a girl") %} spotify:user:12120187843:playlist:2zSx7p9FMr53Al71fxVZer
-        {% endif %}
 
-        '
-      media_content_type: playlist
-  - service: media_player.select_source
-    data_template:
-      entity_id: media_player.spotify
-      source: '{% if is_state("input_select.spotify_source", "Fluance SX6") %} Fluance
-        SX6 {% elif is_state("input_select.spotify_source", "Kevin''s Echo Dot") %}
-        Kevin''s Echo Dot {% elif is_state("input_select.spotify_source", "Kevin''s
-        MacBook Air") %} Kevin''s MacBook Air {% elif is_state("input_select.spotify_source",
-        "Kevin Panaro''s iPhone") %} Kevin Panaro''s iPhone {% elif is_state("input_select.spotify_source",
-        "the future") %} the future {% endif %}
-
-        '
-  - service: media_player.media_pause
-  - service: shell_command.spotify_seek
   - service: media_player.volume_set
     data:
       entity_id: media_player.spotify
       volume_level: '0.12'
-  - service: media_player.media_play
+
+  - service: media_player.play_media
+    data_template:
+      entity_id: media_player.spotify
+      media_content_id: >
+        {% if is_state("input_select.spotify_playlist", "Discover Weekly") %} spotify:user:spotify:playlist:37i9dQZEVXcRxdYlA604qJ
+        {% elif is_state("input_select.spotify_playlist", "Jazz Vibes") %} spotify:user:spotify:playlist:37i9dQZF1DX0SM0LYsmbMT 
+        {% elif is_state("input_select.spotify_playlist", "mykp") %} spotify:user:tuesday_jules:playlist:4HtAK1buoaO3pusyUU2fTO 
+        {% elif is_state("input_select.spotify_playlist", "kev time") %} spotify:user:12120187843:playlist:6EMgqBqtdF80QR6HEgRbHG 
+        {% elif is_state("input_select.spotify_playlist", "blow me" ) %} spotify:user:12120187843:playlist:7zNLeoqysdufhlqIf2pl7T
+        {% elif is_state("input_select.spotify_playlist", "a girl") %} spotify:user:12120187843:playlist:2zSx7p9FMr53Al71fxVZer
+        {% endif %} 
+      media_content_type: playlist
+
+ha_dashboard:
+  alias: Start HADashboard
+  sequence:
+  - service: shell_command.activate_hadashbaord
