@@ -14,10 +14,6 @@
   trigger:
     platform: time
     at: '00:00:00'
-  condition:
-    condition: state
-    entity_id: 'device_tracker.kevins_macbook'
-    state: not_home
   action:
     service: light.turn_on
     entity_id:
@@ -41,6 +37,10 @@
   trigger:
     platform: time
     at: '23:59:55'
+  condition:
+    condition: state
+    entity_id: device_tracker.kevins_macbook
+    state: away
   action:
     service: light.turn_off
     entity_id:
@@ -74,7 +74,7 @@
     entity_id: sensor.ssl_cert_expiry
     below: 21
   action:
-    service: notify.ios_kevin_panaros_iphone
+    service: notify.ios_kevin_panaros_iphone_x
     data:
       message: 'Warning - SSL certificate expires in 21 days and has not been automatically renewed'
 
@@ -97,13 +97,13 @@
     platform: zone
     event: leave
     zone: zone.home
-    entity_id: device_tracker.kevin_panaros_iphone
+    entity_id: device_tracker.kevin_panaros_iphone_x
   condition:
     condition: state
     entity_id: group.all_lights
     state: 'on'
   action:
-  - service: notify.ios_kevin_panaros_iphone
+  - service: notify.ios_kevin_panaros_iphone_x
     data:
       message: 'You left a light on at home'
 # kept for example purposes
