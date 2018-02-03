@@ -13,7 +13,7 @@ homeassistant:
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
 
-# For alexa component
+# For alexa component, git test
 alexa:
 
 # Enables the frontend
