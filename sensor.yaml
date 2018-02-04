@@ -17,3 +17,9 @@
     - wind_bearing
     - apparent_temperature
     - icon
+
+- platform: pi_hole
+  host: 192.168.0.27
+  monitored_conditions:
+    - unique_clients
+    - ads_percentage_today
