@@ -11,6 +11,8 @@ kevins_room_lights:
   entities:
     - light.under_bed_light
     - light.desk_lamp
+    - light.sub_lamp
+    - input_number.huzzah_animation_speed
 
 kevins_room_media_players:
   name: Kevin's Room Media Players

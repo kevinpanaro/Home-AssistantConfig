@@ -12,3 +12,33 @@
   command_topic: "homeassistant/light/desk/switch"
   state_topic: "homeassistant/light/desk/status"
   name: "Desk Lamp"
+- platform: mqtt_json
+  name: Sub Lamp
+  state_topic: "homeassistant/light/lamp/rgb"
+  command_topic: "homeassistant/light/lamp/rgb/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane  
+    - confetti  
+    - cyclon rainbow  
+    - dots  
+    - fire  
+    - glitter  
+    - juggle  
+    - lightning
+    - noise  
+    - police all  
+    - police one  
+    - rainbow  
+    - rainbow with glitter  
+    - ripple  
+    - sinelon  
+    - solid  
+    - twinkle 
+  brightness: true
+  flash: true
+  rgb: true
+  optimistic: false
+  qos: 0
+
