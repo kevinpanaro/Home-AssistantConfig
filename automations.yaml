@@ -151,3 +151,13 @@
     data_template:
       topic: "homeassistant/light/lamp/rgb/set"
       payload: '{"transition":{{ trigger.to_state.state | int }}}'
+
+- alias: "Kevin Arrives Home"
+  trigger:
+    platform: zone
+    entity_id: device_tracker.kevin_panaros_iphone_x
+    zone: zone.home
+    event: enter
+  action:
+    service: light.turn_on
+    entity_id: light.desk_lamp
